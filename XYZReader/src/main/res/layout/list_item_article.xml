@@ -21,7 +21,8 @@
             android:layout_height="100dp"
             android:layout_margin="@dimen/norm_padding"
             android:background="@color/photo_placeholder"
-            android:layout_centerVertical="true" />
+            android:layout_centerVertical="true"
+            android:scaleType="fitXY"/>
 
         <TextView
             android:id="@+id/article_title"
