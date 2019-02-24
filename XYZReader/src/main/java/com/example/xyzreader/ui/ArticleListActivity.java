@@ -10,6 +10,7 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -43,6 +44,8 @@ public class ArticleListActivity extends AppCompatActivity implements
     private Toolbar mToolbar;
     private SwipeRefreshLayout mSwipeRefreshLayout;
     private RecyclerView mRecyclerView;
+    private LinearLayoutManager layoutManager;
+    private boolean isLandscape, isTablet, isLandTablet;
 
     private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.sss");
     // Use default locale format
@@ -63,6 +66,13 @@ public class ArticleListActivity extends AppCompatActivity implements
         mSwipeRefreshLayout = findViewById(R.id.swipe_refresh_layout);
 
         mRecyclerView = findViewById(R.id.recycler_view);
+
+        isLandscape = findViewById(R.id.landscape) != null;
+
+        isTablet = findViewById(R.id.tablet) != null;
+
+        isLandTablet = findViewById(R.id.tablet_landscape) != null;
+
         getLoaderManager().initLoader(0, null, this);
 
         if (savedInstanceState == null) {
@@ -113,7 +123,17 @@ public class ArticleListActivity extends AppCompatActivity implements
         Adapter adapter = new Adapter(cursor);
         adapter.setHasStableIds(true);
         mRecyclerView.setAdapter(adapter);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+
+        if (isLandscape) {
+            layoutManager = new GridLayoutManager(ArticleListActivity.this, 2);
+        } else if (isTablet) {
+            layoutManager = new GridLayoutManager(ArticleListActivity.this, 2);
+        } else if (isLandTablet){
+            layoutManager = new GridLayoutManager(ArticleListActivity.this, 2);
+        }
+        else {
+            layoutManager = new LinearLayoutManager(this);
+        }
         mRecyclerView.setLayoutManager(layoutManager);
         mRecyclerView.setHasFixedSize(true);
     }
