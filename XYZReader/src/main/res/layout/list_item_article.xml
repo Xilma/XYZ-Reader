@@ -34,6 +34,7 @@
             android:paddingRight="16dp"
             android:paddingBottom="4dp"
             android:layout_toEndOf="@id/thumbnail"
+            android:textSize="@dimen/detail_body_text_size"
             android:textColor="@color/primary_text"
             android:ellipsize="end"
             android:maxLines="4" />
@@ -49,6 +50,7 @@
             android:paddingRight="16dp"
             android:paddingBottom="16dp"
             android:textColor="@color/secondary_text"
+            android:textSize="@dimen/detail_body_text_size"
             android:maxLines="2"
             android:ellipsize="end" />
     </RelativeLayout>

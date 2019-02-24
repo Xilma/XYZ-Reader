@@ -127,7 +127,7 @@ public class ArticleListActivity extends AppCompatActivity implements
         if (isLandscape) {
             layoutManager = new GridLayoutManager(ArticleListActivity.this, 2);
         } else if (isTablet) {
-            layoutManager = new GridLayoutManager(ArticleListActivity.this, 2);
+            layoutManager = new LinearLayoutManager(this);
         } else if (isLandTablet){
             layoutManager = new GridLayoutManager(ArticleListActivity.this, 2);
         }
